@@ -1,0 +1,49 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.home-page {
+    display: grid;
+    width: 100%;
+    background-color: white;
+    grid-template-rows: 100vh 160vh 20vh;
+}
+
+header {
+    display: grid;
+    grid-row: 1/2;
+    background-color: #bababa;
+    grid-template-rows: 10vh 80vh;
+}
+
+main {
+    display: grid;
+    grid-row: 2/3;
+    background-color: wheat;
+    grid-template-rows: 80vh 80vh;
+}
+
+footer {
+    grid-row: 3/4;
+    background-color: black;
+}
+
+nav {
+    grid-row: 1/2;
+    background-color: white;
+}
+
+.hero_image {
+    grid-row: 2/3;
+}
+
+.heat_map_container {
+    grid-row: 1/2;
+}
+
+.wage_graph_container {
+    grid-row: 2/3;
+    background-color: cornflowerblue;
+}
