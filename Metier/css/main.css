@@ -1917,16 +1917,17 @@ footer {
     }
     .team-description-container {
         grid-template-columns: 70% 30%;
-        grid-template-rows: 30% 70%;
+        grid-template-rows: 35% 65%;
     }
     .team-name {
         font-size: 4.5rem;
     }
     .team-description {
-        width: 60%;
+        font-size: 1.7rem;
+        width: 70%;
     }
     .team-logo {
-        width: 70%;
+        width: 60%;
     }
     .team-container {
         margin-top: 7rem;
