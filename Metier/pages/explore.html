@@ -99,7 +99,7 @@
                             <option value="agriculture">Agriculture</option>
                         </select>
                     </div>
-                    <div class="heat-map"></div>
+                    <div class="heat-map" id="heat-map"></div>
                     <p class="heat-map-description">Heat map showing comparison between different provinces
                         of Canada for a professions.</p>
                 </div>
@@ -114,13 +114,13 @@
                 <div class="wage-graph-container">
                     <div class="wage-spinner-container">
                         <p class="heat-map-spinner-heading spinner-heading">Select Profession</p>
-                        <select id="heat-map-profession-spinner" class="spinner">
+                        <select id="wages-graph-profession-spinner" class="spinner">
                             <option value="it">IT</option>
                             <option value="medical">Medical</option>
                             <option value="agriculture">Agriculture</option>
                         </select>
                     </div>
-                    <div class="wage-graph"></div>
+                    <div class="wage-graph" id="wage-graph"></div>
                     <p class="wage-graph-description">Heat map showing comparison between different provinces
                         of Canada for a professions.</p>
                 </div>
@@ -153,6 +153,16 @@
             </div>
         </footer>
     </div>
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <!-- <script src="https://www.amcharts.com/lib/4/themes/dataviz.js" defer></script> -->
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+    <script src="/js/app.js"></script>
+    <!-- <script
+        src="http://maps.googleapis.com/maps/api/js?key=AIzaSyApvZImxJ5rfN1jobzVJqEIGGSznAsuhB8&libraries=visualization&callback=initHeatMap"
+        async></script> -->
+    <script
+        src="http://maps.googleapis.com/maps/api/js?key=AIzaSyApvZImxJ5rfN1jobzVJqEIGGSznAsuhB8&libraries=visualization"></script>
 </body>
 
 </html>
