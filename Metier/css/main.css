@@ -601,6 +601,7 @@ footer {
 
 .blog-list {
     margin-bottom: 2rem;
+    margin-right: 5rem;
     display: grid;
     grid-template-columns: 0.5rem auto;
 }

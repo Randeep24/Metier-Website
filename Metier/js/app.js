@@ -158,7 +158,7 @@ function intiExplorePage() {
     let barChart = am4core.create('wage-graph', am4charts.XYChart);
 
     let heatMapSpinner = document.getElementById('heat-map-profession-spinner');
-    heatMapSpinner.addEventListener('input', () => {
+    heatMapSpinner.addEventListener('change', () => {
         let jobCategoryIdSelected = heatMapSpinner.value;
         log('Spinner Value: ' + jobCategoryIdSelected);
         document.getElementById('heat-map').innerHTML = '';
@@ -178,7 +178,7 @@ function intiExplorePage() {
     });
 
     let wagesGraphSpinner = document.getElementById('wages-graph-profession-spinner');
-    wagesGraphSpinner.addEventListener('input', () => {
+    wagesGraphSpinner.addEventListener('change', () => {
         let jobCategoryIdSelected = wagesGraphSpinner.value;
         log('Spinner Value: ' + jobCategoryIdSelected);
         document.getElementById('wage-graph').innerHTML = '';
