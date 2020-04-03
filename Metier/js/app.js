@@ -258,6 +258,20 @@ function initBlogsPage() {
     });
 }
 
+const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ]
 
 function populatePopularBlogsList(blogsArr) {
     let blogsContainer = document.getElementById('blogs-container-popular');
@@ -266,14 +280,19 @@ function populatePopularBlogsList(blogsArr) {
         let htmlString = ``;
         htmlString += `<div class="blog-container blog${i+1}">`;
         htmlString += `<div class="blog-detail-container">`;
-        htmlString += `<img src="${blog.Blog_Image_Link}" alt="">`;
+        htmlString += `<img src="../../images/blog2.jpg" alt="">`;
         htmlString += `<div class="blog-title">${blog.Blog_Title}</div>`;
-        htmlString += `<div class="blog-date">01-01-2020</div>`;
-        htmlString += `<div class="blog-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, cupiditate.</div>`;
+
+        let blogDate = new Date(blog.Blog_Date);
+        let blogDay = blogDate.getDate();
+        let blogMonth = blogDate.getMonth();
+        let blogYear = blogDate.getFullYear();
+        htmlString += `<div class="blog-date">${blogDay} ${months[blogMonth]}, ${blogYear}</div>`;
+        // htmlString += `<div class="blog-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, cupiditate.</div>`;
         htmlString += `<a href="blogDescription.html?blogId=${blog.Blog_ID}" class="read-more-button">Read More</a>`;
         htmlString += `</div>`;
         htmlString += `<div class="blog-detail-on-hover">`;
-        htmlString += `<div class="blog-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam, porro.</div>`;
+        htmlString += `<div class="blog-description">${blog.Blog_Description}</div>`;
         htmlString += `<a href="blogDescription.html?blogId=${blog.Blog_ID}" class="read-now-button">Read Now</a>`;
         htmlString += `</div>`;
         htmlString += `</div>`;
@@ -289,7 +308,7 @@ function populateRecentBlogsList(blogsArr) {
         let htmlString = ``;
         htmlString += `<div class="blog-container blog${i+1}">`;
         htmlString += `<div class="blog-detail-container">`;
-        htmlString += `<img src="${blog.Blog_Image_Link}" alt="">`;
+        htmlString += `<img src="../../images/blog2.jpg" alt="">`;
         htmlString += `<div class="blog-title">${blog.Blog_Title}</div>`;
         htmlString += `<div class="blog-date">01-01-2020</div>`;
         htmlString += `<div class="blog-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, cupiditate.</div>`;

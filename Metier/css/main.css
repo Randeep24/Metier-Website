@@ -629,11 +629,21 @@ footer {
 
 .blogs-container {
     display: grid;
-    grid-template-columns: repeat(5, 21.5rem);
+    grid-template-columns: repeat(11, 21.5rem);
     grid-template-rows: 23.4rem;
     margin: 2rem 0 0 0;
     width: 100%;
-    overflow-x: hidden;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.blogs-container::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+.blogs-container::-webkit-scrollbar-thumb {
+    background: transparent;
 }
 
 .blog-container {
@@ -643,6 +653,8 @@ footer {
 
 .blog-detail-container {
     display: grid;
+    height: 23.4rem;
+    grid-template-rows: 11.5rem auto;
     border-radius: 7px;
 }
 
@@ -655,7 +667,7 @@ footer {
 
 .blog-detail-container .blog-title {
     margin: 0.5rem 0.5rem 0.3rem 0.5rem;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     color: #29B5F6;
 }
 
@@ -677,13 +689,14 @@ footer {
     font-size: 1.05rem;
     margin: 0.5rem 0.5rem 0.5rem 0.5rem;
     justify-self: end;
+    align-self: end;
 }
 
 .blog-detail-on-hover {
     width: 18rem;
     height: 23.4rem;
     display: grid;
-    grid-template-rows: 12rem 5rem 5.5rem;
+    grid-template-rows: 12rem 4.5rem 5.5rem;
     border-radius: 7px;
     position: absolute;
     top: 0;
@@ -697,6 +710,11 @@ footer {
     color: white;
     font-size: 1.1rem;
     grid-row: 2/3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 .blog-detail-on-hover .read-now-button {
@@ -1209,7 +1227,7 @@ footer {
         align-self: center;
     }
     .blogs-container {
-        grid-template-columns: repeat(5, 22rem);
+        grid-template-columns: repeat(11, 22rem);
         grid-template-rows: 26rem;
         margin: 2rem 0 0 0;
     }
@@ -1217,6 +1235,8 @@ footer {
         width: 19rem;
     }
     .blog-detail-container {
+        height: 26rem;
+        grid-template-rows: 12rem auto;
         border-radius: 8px;
     }
     .blog-detail-container img {
@@ -1226,7 +1246,7 @@ footer {
     }
     .blog-detail-container .blog-title {
         margin: 0.8rem 0.8rem 0.3rem 0.8rem;
-        font-size: 1.8rem;
+        font-size: 1.15rem;
     }
     .blog-detail-container .blog-date {
         margin: 0 0.8rem;
@@ -1243,7 +1263,7 @@ footer {
     .blog-detail-on-hover {
         width: 19rem;
         height: 26rem;
-        grid-template-rows: 14rem 5.5rem 4.5rem;
+        grid-template-rows: 14rem 5rem 4.5rem;
         border-radius: 8px;
     }
     .blog-detail-on-hover .blog-description {
@@ -1853,7 +1873,7 @@ footer {
         font-size: 2.3rem;
     }
     .blogs-container {
-        grid-template-columns: repeat(5, 25rem);
+        grid-template-columns: repeat(11, 25rem);
         grid-template-rows: 27.5rem;
         margin: 2.5rem 0 0 0;
     }
@@ -1862,6 +1882,8 @@ footer {
     }
     .blog-detail-container {
         border-radius: 10px;
+        height: 27.5rem;
+        grid-template-rows: 13rem auto;
     }
     .blog-detail-container img {
         width: 20rem;
@@ -1870,7 +1892,7 @@ footer {
     }
     .blog-detail-container .blog-title {
         margin: 1rem 1rem 0.3rem 1rem;
-        font-size: 2rem;
+        font-size: 1.25rem;
     }
     .blog-detail-container .blog-date {
         margin: 0 1rem;
@@ -1885,7 +1907,7 @@ footer {
     .blog-detail-on-hover {
         width: 20rem;
         height: 27.5rem;
-        grid-template-rows: 15rem 6rem 5.5rem;
+        grid-template-rows: 15rem 5.5rem 5.5rem;
         border-radius: 10px;
     }
     .blog-detail-on-hover .blog-description {
