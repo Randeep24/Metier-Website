@@ -601,6 +601,7 @@ footer {
 
 .blog-list {
     margin-bottom: 2rem;
+    margin-right: 5rem;
     display: grid;
     grid-template-columns: 0.5rem auto;
 }
@@ -2165,4 +2166,11 @@ footer {
         clip-path: circle(0% at 100% 0%);
         display: block;
     }
+}
+
+.blogs-container.active {
+    background: rgba(255, 255, 255, 0.3);
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+    transform: scale(1);
 }

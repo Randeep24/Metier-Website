@@ -13,6 +13,7 @@ const wagesApiUrl = '/wages';
 const blogsApiUrl = '/blogs';
 const singleBlogApiUrl = '/blogs/blog';
 const jobCategoryApiUrl = '/jobCategoryList';
+const defaultHomeDataUrl = '/defaultHomeDataUrl';
 const urlHeaderOptions = {
     mode: 'cors',
     method: 'POST',
@@ -105,10 +106,21 @@ function initHomePage() {
     }); */
     let map = new google.maps.Map(document.getElementById('general-heat-map'), mapOptions);
 
-    makeApiCallForDefaultProfession(map);
+    // makeApiCallForDefaultProfession(map);
+    makeApiCallForHomePageHeatMapData(cityListArr => {
+        let citiesDataArr = [];
+        cityListArr.forEach(cityObject => {
+            citiesDataArr.push({
+                lat: cityObject.Lat,
+                lng: cityObject.Lng,
+                jobCounts: cityObject.Number_Of_Job
+            })
+        });
+        populateHeatMap(map, citiesDataArr);
+    });
 }
 
-
+/* 
 function makeApiCallForDefaultProfession(map) {
     log('Making Api Request for Jobs');
 
@@ -131,6 +143,7 @@ function makeApiCallForDefaultProfession(map) {
         log(error);
     });
 }
+ */
 
 
 
@@ -145,7 +158,7 @@ function intiExplorePage() {
     let barChart = am4core.create('wage-graph', am4charts.XYChart);
 
     let heatMapSpinner = document.getElementById('heat-map-profession-spinner');
-    heatMapSpinner.addEventListener('input', () => {
+    heatMapSpinner.addEventListener('change', () => {
         let jobCategoryIdSelected = heatMapSpinner.value;
         log('Spinner Value: ' + jobCategoryIdSelected);
         document.getElementById('heat-map').innerHTML = '';
@@ -165,7 +178,7 @@ function intiExplorePage() {
     });
 
     let wagesGraphSpinner = document.getElementById('wages-graph-profession-spinner');
-    wagesGraphSpinner.addEventListener('input', () => {
+    wagesGraphSpinner.addEventListener('change', () => {
         let jobCategoryIdSelected = wagesGraphSpinner.value;
         log('Spinner Value: ' + jobCategoryIdSelected);
         document.getElementById('wage-graph').innerHTML = '';
@@ -486,6 +499,21 @@ function truncateString(str, num) {
 }
 
 
+function makeApiCallForHomePageHeatMapData(callback) {
+    log('Making Api Request for Home Page Heat Map Data');
+
+    let urlString = getApiUrlForDefaultJobsData();
+    fetch(urlString).then((res) => {
+        res.json().then((responseData) => {
+            log(responseData);
+            callback(responseData.data);
+        });
+    }, (error) => {
+        log(error);
+    });
+}
+
+
 function makeApiCallForJobCategoryList(callback) {
     log('Making Api Request for Job Category List');
 
@@ -565,6 +593,14 @@ function makeApiCallForBlogData(blogId, callback) {
 // ***********************************************************
 //      API Url Functions
 // ***********************************************************
+
+function getApiUrlForDefaultJobsData() {
+    let apiUrl = getBaseUrl();
+    apiUrl += defaultHomeDataUrl;
+    log('Url: ' + apiUrl);
+
+    return apiUrl;
+}
 
 function getApiUrlForJobCategoryList() {
     let apiUrl = getBaseUrl();
