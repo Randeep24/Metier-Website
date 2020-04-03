@@ -365,6 +365,7 @@ function populateBlogData(blogData) {
     document.getElementById('blog-image').src = blogData.Blog_Image_Link;
     // log(blogData.Blog_Description);
     document.getElementById('blog-content').innerHTML = blogData.Blog_Description;
+    document.getElementById('blog-link').innerHTML = `<a href='${blogData.Blog_Link}+'>Go to the Website</a>`;
 }
 
 
@@ -479,10 +480,10 @@ function getDateString(date) {
 
 function truncateString(str, num) {
     if (str.length <= num) {
-      return str
+        return str
     }
     return str.slice(0, num) + '...'
-  }
+}
 
 
 function makeApiCallForJobCategoryList(callback) {
@@ -944,3 +945,48 @@ var bcCitiesDataArrSample = [{
     jobCounts: 46
 }];
  */
+
+document.getElementById("button-contact-submit").addEventListener('click', () => {
+
+    let name = document.getElementById("txtName").value;
+    let email = document.getElementById("txtEmail").value;
+    let message = document.getElementById("txtMessage").value;
+    let displayMessage = document.getElementById("displayMessage");
+    displayMessage.innerHTML = '';
+    if (!name) {
+        displayMessage.innerHTML = 'Please Enter Your Name!';
+    } else if (!isNameValid(name)) {
+        displayMessage.innerHTML = 'Please Write Valid Name!';
+    } else if (!email) {
+        displayMessage.innerHTML = 'Please Enter Your Email ID!';
+    } else if (!isEmailValid(email)) {
+        displayMessage.innerHTML = 'Please Enter Valid Email ID!';
+    } else if (!message) {
+        displayMessage.innerHTML = 'Please Enter Your Message or Query!';
+    } else if (message.length < 100) {
+        displayMessage.innerHTML = 'Please enter message of 100 characters atleast!';
+    } else {
+        document.getElementById("txtName").value = '';
+        document.getElementById("txtEmail").value ='';
+        document.getElementById("txtMessage").value = '';
+        displayMessage.style.color = '#13970C';
+        displayMessage.innerHTML = 'Thank You! For Sending Your Query. We Will Get Back to You Soon!!';
+    }
+});
+
+
+function isNameValid(name) {
+    let regName = `^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$`;
+    if (!name.match(regName)) {
+        return false;
+    }
+    return true;
+}
+
+function isEmailValid(email){
+    let regEmailId = `^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$`;
+    if(!email.match(regEmailId)){
+        return false;
+    }
+    return true;
+}
