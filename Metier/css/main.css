@@ -2104,18 +2104,22 @@ footer {
 
 @keyframes reveal {
     0% {
+        -webkit-clip-path: circle(10% at 100% 0%);
         clip-path: circle(10% at 100% 0%);
     }
     100% {
+        -webkit-clip-path: circle(200% at 100% 0%);
         clip-path: circle(200% at 100% 0%);
     }
 }
 
 @keyframes collapse {
     0% {
+        -webkit-clip-path: circle(100% at 100% 0%);
         clip-path: circle(100% at 100% 0%);
     }
     100% {
+        -webkit-clip-path: circle(0% at 100% 0%);
         clip-path: circle(0% at 100% 0%);
         display: block;
     }

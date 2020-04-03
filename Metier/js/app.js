@@ -250,21 +250,58 @@ function initBlogsPage() {
         log(recentBlogsArr);
         populateRecentBlogsList(recentBlogsArr);
 
-        document.getElementById('blogs-container').addEventListener('click', function () {
-            blogId = 1;
-            var queryString = "?blogId=" + blogId;
-            window.location.href = "blogDescription.html" + queryString;
-        });
+        // document.getElementById('blogs-container').addEventListener('click', function () {
+        //     blogId = 1;
+        //     var queryString = "?blogId=" + blogId;
+        //     window.location.href = "blogDescription.html" + queryString;
+        // });
     });
 }
 
 
 function populatePopularBlogsList(blogsArr) {
-
+    let blogsContainer = document.getElementById('blogs-container-popular');
+    blogsContainer.innerHTML = ``;
+    blogsArr.forEach((blog, i) => {
+        let htmlString = ``;
+        htmlString += `<div class="blog-container blog${i+1}">`;
+        htmlString += `<div class="blog-detail-container">`;
+        htmlString += `<img src="${blog.Blog_Image_Link}" alt="">`;
+        htmlString += `<div class="blog-title">${blog.Blog_Title}</div>`;
+        htmlString += `<div class="blog-date">01-01-2020</div>`;
+        htmlString += `<div class="blog-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, cupiditate.</div>`;
+        htmlString += `<a href="blogDescription.html?blogId=${blog.Blog_ID}" class="read-more-button">Read More</a>`;
+        htmlString += `</div>`;
+        htmlString += `<div class="blog-detail-on-hover">`;
+        htmlString += `<div class="blog-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam, porro.</div>`;
+        htmlString += `<a href="blogDescription.html?blogId=${blog.Blog_ID}" class="read-now-button">Read Now</a>`;
+        htmlString += `</div>`;
+        htmlString += `</div>`;
+        blogsContainer.innerHTML += htmlString;
+    });
 }
 
 
 function populateRecentBlogsList(blogsArr) {
+    let blogsContainer = document.getElementById('blogs-container-recent');
+    blogsContainer.innerHTML = ``;
+    blogsArr.forEach((blog, i) => {
+        let htmlString = ``;
+        htmlString += `<div class="blog-container blog${i+1}">`;
+        htmlString += `<div class="blog-detail-container">`;
+        htmlString += `<img src="${blog.Blog_Image_Link}" alt="">`;
+        htmlString += `<div class="blog-title">${blog.Blog_Title}</div>`;
+        htmlString += `<div class="blog-date">01-01-2020</div>`;
+        htmlString += `<div class="blog-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, cupiditate.</div>`;
+        htmlString += `<a href="blogDescription.html?blogId=${blog.Blog_ID}" class="read-more-button">Read More</a>`;
+        htmlString += `</div>`;
+        htmlString += `<div class="blog-detail-on-hover">`;
+        htmlString += `<div class="blog-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam, porro.</div>`;
+        htmlString += `<a href="blogDescription.html?blogId=${blog.Blog_ID}" class="read-now-button">Read Now</a>`;
+        htmlString += `</div>`;
+        htmlString += `</div>`;
+        blogsContainer.innerHTML += htmlString;
+    });
 
 }
 
