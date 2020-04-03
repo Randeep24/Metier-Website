@@ -88,7 +88,9 @@ function initializePage(page) {
             initBlogDescriptionPage();
             break;
         default:
-            log("Some Other Page is Loaded !");
+            // log("Some Other Page is Loaded !");
+            log('Home Page is Loaded !');
+            initHomePage();
     }
 }
 
