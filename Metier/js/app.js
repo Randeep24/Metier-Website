@@ -32,6 +32,20 @@ const mapOptions = {
     minZoom: 3.2,
     maxZoom: 8
 }
+const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+]
 
 
 
@@ -235,6 +249,8 @@ function initBlogsPage() {
         let popularBlogsArr = [];
         let recentBlogsArr = [];
         blogsListDataArr.forEach(blogItem => {
+            let blogDateStr = getDateString(blogItem.Blog_Date);
+            blogItem.Blog_Date = blogDateStr;
             if (blogItem.Blog_Type === 1) {
                 popularBlogsArr.push(blogItem);
             } else {
@@ -258,42 +274,23 @@ function initBlogsPage() {
     });
 }
 
-const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ]
 
 function populatePopularBlogsList(blogsArr) {
     let blogsContainer = document.getElementById('blogs-container-popular');
     blogsContainer.innerHTML = ``;
     blogsArr.forEach((blog, i) => {
         let htmlString = ``;
-        htmlString += `<div class="blog-container blog${i+1}">`;
+        htmlString += `<div class="blog-container blog${i + 1}">`;
         htmlString += `<div class="blog-detail-container">`;
-        htmlString += `<img src="../../images/blog2.jpg" alt="">`;
+        htmlString += `<img src="${blog.Blog_Image_Thumbnail_Link}" alt="">`;
         htmlString += `<div class="blog-title">${blog.Blog_Title}</div>`;
-
-        let blogDate = new Date(blog.Blog_Date);
-        let blogDay = blogDate.getDate();
-        let blogMonth = blogDate.getMonth();
-        let blogYear = blogDate.getFullYear();
-        htmlString += `<div class="blog-date">${blogDay} ${months[blogMonth]}, ${blogYear}</div>`;
+        htmlString += `<div class="blog-date">${blog.Blog_Date}</div>`;
         // htmlString += `<div class="blog-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, cupiditate.</div>`;
         htmlString += `<a href="blogDescription.html?blogId=${blog.Blog_ID}" class="read-more-button">Read More</a>`;
         htmlString += `</div>`;
-        htmlString += `<div class="blog-detail-on-hover">`;
-        htmlString += `<div class="blog-description">${blog.Blog_Description}</div>`;
-        htmlString += `<a href="blogDescription.html?blogId=${blog.Blog_ID}" class="read-now-button">Read Now</a>`;
+        htmlString += `<div class="blog-detail-on-hover" style="background-image: linear-gradient(to right bottom, #0000007e, #000000ee), url(${blog.Blog_Image_Thumbnail_Link});">`;
+        htmlString += `<div class="blog-description">${truncateString(blog.Blog_Description, 100)}</div>`;
+        htmlString += `<a href="blogDescription.html?blogId=${blog.Blog_ID}" class="read-now-button">Read More</a>`;
         htmlString += `</div>`;
         htmlString += `</div>`;
         blogsContainer.innerHTML += htmlString;
@@ -306,17 +303,17 @@ function populateRecentBlogsList(blogsArr) {
     blogsContainer.innerHTML = ``;
     blogsArr.forEach((blog, i) => {
         let htmlString = ``;
-        htmlString += `<div class="blog-container blog${i+1}">`;
+        htmlString += `<div class="blog-container blog${i + 1}">`;
         htmlString += `<div class="blog-detail-container">`;
-        htmlString += `<img src="../../images/blog2.jpg" alt="">`;
+        htmlString += `<img src="${blog.Blog_Image_Thumbnail_Link}" alt="">`;
         htmlString += `<div class="blog-title">${blog.Blog_Title}</div>`;
-        htmlString += `<div class="blog-date">01-01-2020</div>`;
-        htmlString += `<div class="blog-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, cupiditate.</div>`;
+        htmlString += `<div class="blog-date">${blog.Blog_Date}</div>`;
+        // htmlString += `<div class="blog-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, cupiditate.</div>`;
         htmlString += `<a href="blogDescription.html?blogId=${blog.Blog_ID}" class="read-more-button">Read More</a>`;
         htmlString += `</div>`;
-        htmlString += `<div class="blog-detail-on-hover">`;
-        htmlString += `<div class="blog-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam, porro.</div>`;
-        htmlString += `<a href="blogDescription.html?blogId=${blog.Blog_ID}" class="read-now-button">Read Now</a>`;
+        htmlString += `<div class="blog-detail-on-hover" style="background-image: linear-gradient(to right bottom, #0000007e, #000000ee), url(${blog.Blog_Image_Thumbnail_Link});">`;
+        htmlString += `<div class="blog-description">${truncateString(blog.Blog_Description, 100)}</div>`;
+        htmlString += `<a href="blogDescription.html?blogId=${blog.Blog_ID}" class="read-now-button">Read More</a>`;
         htmlString += `</div>`;
         htmlString += `</div>`;
         blogsContainer.innerHTML += htmlString;
@@ -363,6 +360,8 @@ function getBlogId() {
 
 function populateBlogData(blogData) {
     document.getElementById('blog-title').innerHTML = blogData.Blog_Title;
+    document.getElementById('blog-category').innerHTML = blogData.Blog_Type === 1 ? 'Popular' : 'Recent';
+    document.getElementById('blog-date').innerHTML = getDateString(blogData.Blog_Date);
     document.getElementById('blog-image').src = blogData.Blog_Image_Link;
     // log(blogData.Blog_Description);
     document.getElementById('blog-content').innerHTML = blogData.Blog_Description;
@@ -465,6 +464,25 @@ function populateBarChart(chart, chartData) {
 
     });
 }
+
+
+function getDateString(date) {
+    let blogDate = new Date(date);
+    let blogDay = blogDate.getDate();
+    let blogMonth = blogDate.getMonth();
+    let blogYear = blogDate.getFullYear();
+    let dateString = `${blogDay} ${months[blogMonth]}, ${blogYear}`;
+
+    return dateString;
+}
+
+
+function truncateString(str, num) {
+    if (str.length <= num) {
+      return str
+    }
+    return str.slice(0, num) + '...'
+  }
 
 
 function makeApiCallForJobCategoryList(callback) {
