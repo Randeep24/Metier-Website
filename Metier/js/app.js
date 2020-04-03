@@ -981,6 +981,22 @@ var bcCitiesDataArrSample = [{
     jobCounts: 46
 }];
  */
+document.getElementById("submit-button").addEventListener('click', () => {
+    let email = document.getElementById("email").value;
+    let displayMessage = document.getElementById("newsletter-message");
+    displayMessage.value = '';
+    if (!email) {
+        displayMessage.innerHTML = 'Please Enter Your Email ID!';
+    } else if (!isEmailValid(email)) {
+        displayMessage.innerHTML = 'Please Enter Valid Email ID!';
+    } else {
+        document.getElementById("dialog-modal-container").style.display = "block";
+        document.getElementById("close-button").addEventListener('click', () => {
+            document.getElementById("dialog-modal-container").style.display = "none";
+        })
+    }
+
+});
 
 document.getElementById("button-contact-submit").addEventListener('click', () => {
 
@@ -1011,6 +1027,9 @@ document.getElementById("button-contact-submit").addEventListener('click', () =>
 });
 
 
+
+
+
 function isNameValid(name) {
     let regName = `^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$`;
     if (!name.match(regName)) {
@@ -1026,3 +1045,4 @@ function isEmailValid(email){
     }
     return true;
 }
+

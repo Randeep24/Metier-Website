@@ -101,7 +101,8 @@
                     <div class="general-heat-map" id="general-heat-map"></div>
                     <!-- <p class="general-heat-map-description">Heat map showing comparison between different provinces
                         of Canada for a professions.</p> -->
-                    <p class="general-heat-map-description">Heat map showing combined job density for Software & Programming, Information Technology<br>and Creative & Graphic Design over Canada.</p>
+                    <p class="general-heat-map-description">Heat map showing combined job density for Software &
+                        Programming, Information Technology<br>and Creative & Graphic Design over Canada.</p>
                     <a href="pages/explore.html" class="button button-explore">Explore More</a>
                 </div>
             </div>
@@ -179,7 +180,8 @@
             <div class="newsletter-container home-page-newsletter">
                 <div class="heading">Sign up for latest updates</div>
                 <input type="email" id="email" placeholder="Email Id">
-                <a href="#" class="button button-submit">Submit</a>
+                <p id="newsletter-message"></p>
+                <button class="button button-submit" id="submit-button">Submit</button>
             </div>
             <div class="footer-container">
                 <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -201,6 +203,12 @@
                 <a href="#" class="contact-link">Contact</a>
             </div>
         </footer>
+        <div class="dialog-modal-container" id="dialog-modal-container">
+            <div class="newsletter-subscription-dialog">
+                <div class="message"><span class="message-span">Thank You</span> for Subscribing !</div>
+                <button class="close-button button" id="close-button">OK</button>
+            </div>
+        </div>
     </div>
     <script src="/js/app.js"></script>
     <!-- <script
