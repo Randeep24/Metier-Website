@@ -696,7 +696,7 @@ footer {
     width: 18rem;
     height: 23.4rem;
     display: grid;
-    grid-template-rows: 12rem 4.5rem 5.5rem;
+    grid-template-rows: 85% 15%;
     border-radius: 7px;
     position: absolute;
     top: 0;
@@ -709,18 +709,14 @@ footer {
 .blog-detail-on-hover .blog-description {
     color: white;
     font-size: 1.1rem;
-    grid-row: 2/3;
     overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
+    align-self: end;
+    margin-bottom: 0.5rem;
 }
 
 .blog-detail-on-hover .read-now-button {
     color: white;
     font-size: 0.8rem;
-    grid-row: 3/4;
     text-decoration: none;
     justify-self: end;
     align-self: center;
@@ -817,8 +813,9 @@ footer {
 }
 
 .paragraphs span {
-    font-size: 2.5rem;
+    font-weight: bold;
 }
+
 
 /***********************************************************************************************************************************
 /**************************************************** About Us Page ****************************************************************
@@ -1263,7 +1260,6 @@ footer {
     .blog-detail-on-hover {
         width: 19rem;
         height: 26rem;
-        grid-template-rows: 14rem 5rem 4.5rem;
         border-radius: 8px;
     }
     .blog-detail-on-hover .blog-description {
@@ -1311,9 +1307,7 @@ footer {
     .blog-page .divider {
         display: block;
     }
-    .paragraphs span {
-        font-size: 3.2rem;
-    }
+
     /***********************************************************************************************************************************
     /**************************************************** About Us Page ****************************************************************
     /***********************************************************************************************************************************/
@@ -1605,9 +1599,6 @@ footer {
     }
     .paragraphs {
         font-size: 1.2rem;
-    }
-    .paragraphs span {
-        font-size: 3.3rem;
     }
     /***********************************************************************************************************************************
     /**************************************************** About Us Page ****************************************************************
@@ -1907,7 +1898,6 @@ footer {
     .blog-detail-on-hover {
         width: 20rem;
         height: 27.5rem;
-        grid-template-rows: 15rem 5.5rem 5.5rem;
         border-radius: 10px;
     }
     .blog-detail-on-hover .blog-description {
@@ -1926,9 +1916,6 @@ footer {
     }
     .paragraphs {
         font-size: 1.3rem;
-    }
-    .paragraphs span {
-        font-size: 3.5rem;
     }
     /***********************************************************************************************************************************
     /**************************************************** About Us Page ****************************************************************
