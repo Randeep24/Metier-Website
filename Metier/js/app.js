@@ -13,6 +13,7 @@ const wagesApiUrl = '/wages';
 const blogsApiUrl = '/blogs';
 const singleBlogApiUrl = '/blogs/blog';
 const jobCategoryApiUrl = '/jobCategoryList';
+const defaultHomeDataUrl = '/defaultHomeDataUrl';
 const urlHeaderOptions = {
     mode: 'cors',
     method: 'POST',
@@ -105,10 +106,21 @@ function initHomePage() {
     }); */
     let map = new google.maps.Map(document.getElementById('general-heat-map'), mapOptions);
 
-    makeApiCallForDefaultProfession(map);
+    // makeApiCallForDefaultProfession(map);
+    makeApiCallForHomePageHeatMapData(cityListArr => {
+        let citiesDataArr = [];
+        cityListArr.forEach(cityObject => {
+            citiesDataArr.push({
+                lat: cityObject.Lat,
+                lng: cityObject.Lng,
+                jobCounts: cityObject.Number_Of_Job
+            })
+        });
+        populateHeatMap(map, citiesDataArr);
+    });
 }
 
-
+/* 
 function makeApiCallForDefaultProfession(map) {
     log('Making Api Request for Jobs');
 
@@ -131,6 +143,7 @@ function makeApiCallForDefaultProfession(map) {
         log(error);
     });
 }
+ */
 
 
 
@@ -479,10 +492,25 @@ function getDateString(date) {
 
 function truncateString(str, num) {
     if (str.length <= num) {
-      return str
+        return str
     }
     return str.slice(0, num) + '...'
-  }
+}
+
+
+function makeApiCallForHomePageHeatMapData(callback) {
+    log('Making Api Request for Home Page Heat Map Data');
+
+    let urlString = getApiUrlForDefaultJobsData();
+    fetch(urlString).then((res) => {
+        res.json().then((responseData) => {
+            log(responseData);
+            callback(responseData.data);
+        });
+    }, (error) => {
+        log(error);
+    });
+}
 
 
 function makeApiCallForJobCategoryList(callback) {
@@ -564,6 +592,14 @@ function makeApiCallForBlogData(blogId, callback) {
 // ***********************************************************
 //      API Url Functions
 // ***********************************************************
+
+function getApiUrlForDefaultJobsData() {
+    let apiUrl = getBaseUrl();
+    apiUrl += defaultHomeDataUrl;
+    log('Url: ' + apiUrl);
+
+    return apiUrl;
+}
 
 function getApiUrlForJobCategoryList() {
     let apiUrl = getBaseUrl();

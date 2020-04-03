@@ -638,10 +638,14 @@ footer {
 }
 
 .blogs-container::-webkit-scrollbar {
-    width: 0px;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
+    width: 0px;
+    /* Remove scrollbar space */
+    background: transparent;
+    /* Optional: just make scrollbar invisible */
 }
+
 /* Optional: show position indicator in red */
+
 .blogs-container::-webkit-scrollbar-thumb {
     background: transparent;
 }
@@ -815,7 +819,6 @@ footer {
 .paragraphs span {
     font-weight: bold;
 }
-
 
 /***********************************************************************************************************************************
 /**************************************************** About Us Page ****************************************************************
@@ -1307,7 +1310,6 @@ footer {
     .blog-page .divider {
         display: block;
     }
-
     /***********************************************************************************************************************************
     /**************************************************** About Us Page ****************************************************************
     /***********************************************************************************************************************************/
@@ -2107,7 +2109,7 @@ footer {
     animation-fill-mode: forwards;
 }
 
-.blog-container:hover > .blog-detail-on-hover {
+.blog-container:hover>.blog-detail-on-hover {
     animation: reveal 1s;
 }
 
@@ -2132,4 +2134,11 @@ footer {
         clip-path: circle(0% at 100% 0%);
         display: block;
     }
+}
+
+.blogs-container.active {
+    background: rgba(255, 255, 255, 0.3);
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+    transform: scale(1);
 }
