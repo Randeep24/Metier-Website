@@ -87,9 +87,16 @@ function initializePage(page) {
             log('Blog Description Page is Loaded !');
             initBlogDescriptionPage();
             break;
+        case "contact.html":
+            log('Contact Page is Loaded !');
+            initContactPage();
+            break;
         default:
-            log("Some Other Page is Loaded !");
+            // log("Some Other Page is Loaded !");
+            log('Home Page is Loaded !');
+            initHomePage();
     }
+    setUpNewsletter();
 }
 
 
@@ -118,6 +125,8 @@ function initHomePage() {
         });
         populateHeatMap(map, citiesDataArr);
     });
+
+    // setUpNewsletter();
 }
 
 /* 
@@ -144,6 +153,27 @@ function makeApiCallForDefaultProfession(map) {
     });
 }
  */
+
+
+function setUpNewsletter() {
+    document.getElementById("submit-button").addEventListener('click', () => {
+        let email = document.getElementById("email").value;
+        let displayMessage = document.getElementById("newsletter-message");
+        displayMessage.value = '';
+        if (!email) {
+            displayMessage.innerHTML = 'Please Enter Your Email ID!';
+        } else if (!isEmailValid(email)) {
+            displayMessage.innerHTML = 'Please Enter Valid Email ID!';
+        } else {
+            document.getElementById("email").value = '';
+            document.getElementById("dialog-modal-container").style.display = "block";
+            document.getElementById("close-button").addEventListener('click', () => {
+                document.getElementById("dialog-modal-container").style.display = "none";
+            })
+        }
+
+    });
+}
 
 
 
@@ -378,7 +408,43 @@ function populateBlogData(blogData) {
     document.getElementById('blog-image').src = blogData.Blog_Image_Link;
     // log(blogData.Blog_Description);
     document.getElementById('blog-content').innerHTML = blogData.Blog_Description;
-    document.getElementById('blog-link').innerHTML = `<a href='${blogData.Blog_Link}+'>Go to the Website</a>`;
+    document.getElementById('blog-link').innerHTML = `<a href='${blogData.Blog_Link}'>Go to the Website</a>`;
+}
+
+
+
+// ***********************************************************
+//      Setting Up Contact Page
+// ***********************************************************
+
+function initContactPage() {
+    document.getElementById("button-contact-submit").addEventListener('click', () => {
+
+        let name = document.getElementById("txtName").value;
+        let email = document.getElementById("txtEmail").value;
+        let message = document.getElementById("txtMessage").value;
+        let displayMessage = document.getElementById("displayMessage");
+        displayMessage.innerHTML = '';
+        if (!name) {
+            displayMessage.innerHTML = 'Please Enter Your Name!';
+        } else if (!isNameValid(name)) {
+            displayMessage.innerHTML = 'Please Write Valid Name!';
+        } else if (!email) {
+            displayMessage.innerHTML = 'Please Enter Your Email ID!';
+        } else if (!isEmailValid(email)) {
+            displayMessage.innerHTML = 'Please Enter Valid Email ID!';
+        } else if (!message) {
+            displayMessage.innerHTML = 'Please Enter Your Message or Query!';
+        } else if (message.length < 100) {
+            displayMessage.innerHTML = 'Please enter message of 100 characters atleast!';
+        } else {
+            document.getElementById("txtName").value = '';
+            document.getElementById("txtEmail").value = '';
+            document.getElementById("txtMessage").value = '';
+            displayMessage.style.color = '#13970C';
+            displayMessage.innerHTML = 'Thank You! For Sending Your Query. We Will Get Back to You Soon!!';
+        }
+    });
 }
 
 
@@ -496,6 +562,23 @@ function truncateString(str, num) {
         return str
     }
     return str.slice(0, num) + '...'
+}
+
+
+function isNameValid(name) {
+    let regName = `^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$`;
+    if (!name.match(regName)) {
+        return false;
+    }
+    return true;
+}
+
+function isEmailValid(email) {
+    let regEmailId = `^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$`;
+    if (!email.match(regEmailId)) {
+        return false;
+    }
+    return true;
 }
 
 
@@ -649,9 +732,14 @@ function getApiUrlForBlogData(blogId) {
     return apiUrl;
 }
 
-
+/* 
 function getBaseUrl() {
     return 'http://localhost:3000';
+}
+ */
+
+function getBaseUrl() {
+    return 'http://server.metier.wmdd.ca';
 }
 
 
@@ -981,68 +1069,5 @@ var bcCitiesDataArrSample = [{
     jobCounts: 46
 }];
  */
-document.getElementById("submit-button").addEventListener('click', () => {
-    let email = document.getElementById("email").value;
-    let displayMessage = document.getElementById("newsletter-message");
-    displayMessage.value = '';
-    if (!email) {
-        displayMessage.innerHTML = 'Please Enter Your Email ID!';
-    } else if (!isEmailValid(email)) {
-        displayMessage.innerHTML = 'Please Enter Valid Email ID!';
-    } else {
-        document.getElementById("dialog-modal-container").style.display = "block";
-        document.getElementById("close-button").addEventListener('click', () => {
-            document.getElementById("dialog-modal-container").style.display = "none";
-        })
-    }
 
-});
-
-document.getElementById("button-contact-submit").addEventListener('click', () => {
-
-    let name = document.getElementById("txtName").value;
-    let email = document.getElementById("txtEmail").value;
-    let message = document.getElementById("txtMessage").value;
-    let displayMessage = document.getElementById("displayMessage");
-    displayMessage.innerHTML = '';
-    if (!name) {
-        displayMessage.innerHTML = 'Please Enter Your Name!';
-    } else if (!isNameValid(name)) {
-        displayMessage.innerHTML = 'Please Write Valid Name!';
-    } else if (!email) {
-        displayMessage.innerHTML = 'Please Enter Your Email ID!';
-    } else if (!isEmailValid(email)) {
-        displayMessage.innerHTML = 'Please Enter Valid Email ID!';
-    } else if (!message) {
-        displayMessage.innerHTML = 'Please Enter Your Message or Query!';
-    } else if (message.length < 100) {
-        displayMessage.innerHTML = 'Please enter message of 100 characters atleast!';
-    } else {
-        document.getElementById("txtName").value = '';
-        document.getElementById("txtEmail").value ='';
-        document.getElementById("txtMessage").value = '';
-        displayMessage.style.color = '#13970C';
-        displayMessage.innerHTML = 'Thank You! For Sending Your Query. We Will Get Back to You Soon!!';
-    }
-});
-
-
-
-
-
-function isNameValid(name) {
-    let regName = `^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$`;
-    if (!name.match(regName)) {
-        return false;
-    }
-    return true;
-}
-
-function isEmailValid(email){
-    let regEmailId = `^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$`;
-    if(!email.match(regEmailId)){
-        return false;
-    }
-    return true;
-}
 
