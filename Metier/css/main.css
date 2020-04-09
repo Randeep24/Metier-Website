@@ -46,7 +46,7 @@ html {
 }
 
 .dialog-modal-container {
-    display: none; 
+    display: none;
     position: fixed;
     z-index: 1;
     padding-top: 100px;
@@ -66,15 +66,16 @@ html {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 35%;
-    border-radius: 7px;
-    padding: 6rem;
+    width: 60%;
+    border-radius: 4px;
+    padding: 4rem;
 }
 
 .newsletter-subscription-dialog .message {
-    font-size: 2rem;
+    font-size: 1.2rem;
+    text-align: center;
     justify-self: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     font-weight: lighter;
 }
 
@@ -267,6 +268,7 @@ nav a {
 /************************************************************** Footer *************************************************************/
 
 footer {
+    /**-------------- Footer Map Image (https://www.freepik.com/free-vector/grey-world-map_893780.htm#page=1&query=map&position=0) ------------*/
     position: relative;
     grid-row: 3/4;
     background: url(../images/footer_background.svg);
@@ -425,8 +427,6 @@ footer {
 }
 
 .general-heat-map {
-    /* background: url(../images/heatmap.png); */
-    /* background-color: rgba(3, 138, 210, 0.596); */
     border-radius: 3px;
     height: 210px;
     margin: 0.8rem 0.4rem 0.5rem 0.4rem;
@@ -499,8 +499,6 @@ footer {
 
 .feature-icon {
     background: #29B5F6;
-    /* width: 140px;
-    height: 140px; */
     width: 110px;
     height: 110px;
     border-radius: 55px;
@@ -519,11 +517,9 @@ footer {
 }
 
 .feature-icon img {
-    /* width: 140px; */
     width: 110px;
     height: 100%;
     object-fit: contain;
-    /* padding: 0 30px 0 30px; */
     padding: 0 25px;
 }
 
@@ -624,7 +620,6 @@ footer {
 
 .wage-graph {
     width: 100%;
-    /* height: 100%; */
 }
 
 .heat-map-description, .wage-graph-description {
@@ -681,14 +676,18 @@ footer {
     overflow-y: hidden;
 }
 
-.blogs-container::-webkit-scrollbar {
-    width: 0px;
-    /* Remove scrollbar space */
-    background: transparent;
-    /* Optional: just make scrollbar invisible */
+@media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance: none) {
+        .blogs-container {
+            max-width: 450px;
+        }
+    }
 }
 
-/* Optional: show position indicator in red */
+.blogs-container::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
 
 .blogs-container::-webkit-scrollbar-thumb {
     background: transparent;
@@ -749,7 +748,7 @@ footer {
     position: absolute;
     top: 0;
     left: 0;
-    background-image: linear-gradient(to right bottom, #0000007e, #000000ee), url(../images/blog2.jpg);
+    background-image: linear-gradient(to right bottom, #0000007e, #000000ee);
     background-size: cover;
     padding: 1rem;
 }
@@ -819,10 +818,6 @@ footer {
     margin: 0 auto 1.5rem auto;
     width: 99%;
 }
-
-/* .blog-page .author, .blog-page .divider {
-    margin-right: 0.7rem;
-} */
 
 .blog-page .author {
     grid-row: 1/2;
@@ -1105,6 +1100,15 @@ footer {
     .logo svg {
         width: 8.5rem;
     }
+    .newsletter-subscription-dialog {
+        width: 50%;
+        border-radius: 5px;
+        padding: 4rem;
+    }
+    .newsletter-subscription-dialog .message {
+        font-size: 1.5rem;
+        margin-bottom: 3rem;
+    }
     /****************************************************** Navigation Section *****************************************************/
     .nav-box-button {
         top: 0.7rem;
@@ -1129,7 +1133,6 @@ footer {
         font-size: 1.8rem;
         margin-bottom: 1rem;
     }
-
     #newsletter-message {
         margin-bottom: 1.1rem;
     }
@@ -1348,6 +1351,13 @@ footer {
         padding: 0.4rem;
         width: 10rem;
     }
+    @media not all and (min-resolution:.001dpcm) {
+        @supports (-webkit-appearance: none) {
+            .blogs-container {
+                max-width: 500px;
+            }
+        }
+    }
     /***********************************************************************************************************************************
     /******************************************************** Blog Page ****************************************************************
     /***********************************************************************************************************************************/
@@ -1488,6 +1498,15 @@ footer {
         width: 16rem;
         margin: 0.5rem 0 0 0;
     }
+    .newsletter-subscription-dialog {
+        width: 50%;
+        border-radius: 6px;
+        padding: 6rem;
+    }
+    .newsletter-subscription-dialog .message {
+        font-size: 1.8rem;
+        margin-bottom: 4rem;
+    }
     /****************************************************** Navigation Section *****************************************************/
     .nav-small-screen {
         display: none;
@@ -1515,7 +1534,6 @@ footer {
         font-size: 2.1rem;
         margin-bottom: 1.2rem;
     }
-
     #newsletter-message {
         margin-bottom: 1.4rem;
     }
@@ -1649,6 +1667,14 @@ footer {
     /***********************************************************************************************************************************/
     .blogs-page main {
         margin: 5rem 0 3rem 6rem;
+    }
+
+    @media not all and (min-resolution:.001dpcm) {
+        @supports (-webkit-appearance: none) {
+            .blogs-container {
+                max-width: 600px;
+            }
+        }
     }
     /***********************************************************************************************************************************
     /******************************************************** Blog Page ****************************************************************
@@ -1791,6 +1817,13 @@ footer {
         font-size: 1.65rem;
         width: 17.5rem;
     }
+    .newsletter-subscription-dialog {
+        width: 40%;
+        border-radius: 7px;
+    }
+    .newsletter-subscription-dialog .message {
+        font-size: 2rem;
+    }
     /******************************************************** Footer Section *******************************************************/
     footer {
         height: 43rem;
@@ -1801,11 +1834,9 @@ footer {
     .newsletter-container .heading {
         font-size: 2.3rem;
     }
-
-    #newsletter-message{
+    #newsletter-message {
         margin-bottom: 1.8rem;
     }
-
     #email {
         width: 38rem;
         padding: 1.2rem 2rem;
@@ -1990,6 +2021,13 @@ footer {
     .blog-detail-on-hover .blog-description {
         font-size: 1.3rem;
     }
+    @media not all and (min-resolution:.001dpcm) {
+        @supports (-webkit-appearance: none) {
+            .blogs-container {
+                max-width: 750px;
+            }
+        }
+    }
     /***********************************************************************************************************************************
     /******************************************************** Blog Page ****************************************************************
     /***********************************************************************************************************************************/
@@ -2090,6 +2128,9 @@ footer {
 ***********************************************************************************************************************************/
 
 @media screen and (min-width: 1200px) {
+    .newsletter-subscription-dialog {
+        width: 35%;
+    }
     /******************************************************** Footer Section *******************************************************/
     footer {
         height: 48rem;
@@ -2164,6 +2205,13 @@ footer {
     .blogs-container {
         margin: 3rem 0 0 0;
     }
+    @media not all and (min-resolution:.001dpcm) {
+        @supports (-webkit-appearance: none) {
+            .blogs-container {
+                max-width: 1100px;
+            }
+        }
+    }
     /***********************************************************************************************************************************
     /******************************************************** Blog Page ****************************************************************
     /***********************************************************************************************************************************/
@@ -2187,8 +2235,11 @@ footer {
     }
 }
 
+/*****************************************************************************************************************************
+********************************************************* Blog Card Animation ************************************************
+******************************************************************************************************************************/
+
 .blog-detail-on-hover {
-    /* clip-path: circle(0% at 100% 0%); */
     display: hidden;
     animation: collapse 0.5s;
     animation-fill-mode: forwards;

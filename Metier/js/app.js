@@ -325,7 +325,7 @@ function populatePopularBlogsList(blogsArr) {
         let htmlString = ``;
         htmlString += `<div class="blog-container blog${i + 1}">`;
         htmlString += `<div class="blog-detail-container">`;
-        htmlString += `<img src="${blog.Blog_Image_Thumbnail_Link}" alt="">`;
+        htmlString += `<img src="${blog.Blog_Image_Thumbnail_Link}" alt="${blog.Blog_Image_Source_Link}">`;
         htmlString += `<div class="blog-title">${blog.Blog_Title}</div>`;
         htmlString += `<div class="blog-date">${blog.Blog_Date}</div>`;
         // htmlString += `<div class="blog-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, cupiditate.</div>`;
@@ -348,7 +348,7 @@ function populateRecentBlogsList(blogsArr) {
         let htmlString = ``;
         htmlString += `<div class="blog-container blog${i + 1}">`;
         htmlString += `<div class="blog-detail-container">`;
-        htmlString += `<img src="${blog.Blog_Image_Thumbnail_Link}" alt="">`;
+        htmlString += `<img src="${blog.Blog_Image_Thumbnail_Link}" alt="${blog.Blog_Image_Source_Link}">`;
         htmlString += `<div class="blog-title">${blog.Blog_Title}</div>`;
         htmlString += `<div class="blog-date">${blog.Blog_Date}</div>`;
         // htmlString += `<div class="blog-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, cupiditate.</div>`;
@@ -406,6 +406,7 @@ function populateBlogData(blogData) {
     document.getElementById('blog-category').innerHTML = blogData.Blog_Type === 1 ? 'Popular' : 'Recent';
     document.getElementById('blog-date').innerHTML = getDateString(blogData.Blog_Date);
     document.getElementById('blog-image').src = blogData.Blog_Image_Link;
+    document.getElementById('blog-image').alt= blogData.Blog_Image_Source_Link;
     // log(blogData.Blog_Description);
     document.getElementById('blog-content').innerHTML = blogData.Blog_Description;
     document.getElementById('blog-link').innerHTML = `<a href='${blogData.Blog_Link}'>Go to the Website</a>`;

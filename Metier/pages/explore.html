@@ -11,6 +11,8 @@
 </head>
 
 <body>
+
+    <!---------------------------------------- Navigation Bar For Small Screens ----------------------------------------->
     <nav class="nav-small-screen">
         <input type="checkbox" class="nav-box-checkbox" id="nav-toggle">
         <label for="nav-toggle" class="nav-box-button">
@@ -37,6 +39,8 @@
         </nav>
     </nav>
     <div class="explore-page">
+
+        <!----------------------------------------------- Navigation Header --------------------------------------------->
         <header class="navigation-header">
             <div class="navigation-container">
                 <a class="logo" href="../index.html">
@@ -83,7 +87,9 @@
                 </nav>
             </div>
         </header>
+
         <main>
+            <!----------------------------------------------- Heat Map Container --------------------------------------------->
             <div class="explore-heat-map-container">
                 <div class="explore-heat-map-heading">Heat Map</div>
                 <div class="underline"></div>
@@ -105,6 +111,8 @@
                         of Canada for a professions.</p>
                 </div>
             </div>
+
+            <!-------------------------------------------- Wage Comparison Container ------------------------------------------>
             <div class="wage-comparison-container">
                 <div class="wage-comparison-heading">Wage Graph</div>
                 <div class="underline"></div>
@@ -127,13 +135,17 @@
                 </div>
             </div>
         </main>
+
         <footer>
+
+            <!------------------------------------------- Newsletter Section --------------------------------------------->
             <div class="newsletter-container home-page-newsletter">
                 <div class="heading">Sign up for latest updates</div>
                 <input type="email" id="email" placeholder="Email Id">
                 <p id="newsletter-message"></p>
                 <button class="button button-submit" id="submit-button">Submit</button>
             </div>
+
             <div class="footer-container">
                 <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <defs>
@@ -154,21 +166,20 @@
                 <a href="#" class="contact-link">Contact</a>
             </div>
         </footer>
+
+        <!------------------------------------------- Modal For Newsletter Section --------------------------------------------->
         <div class="dialog-modal-container" id="dialog-modal-container">
             <div class="newsletter-subscription-dialog">
                 <div class="message"><span class="message-span">Thank You</span> for Subscribing !</div>
                 <button class="close-button button" id="close-button">OK</button>
             </div>
         </div>
+        
     </div>
     <script src="https://www.amcharts.com/lib/4/core.js"></script>
     <script src="https://www.amcharts.com/lib/4/charts.js"></script>
-    <!-- <script src="https://www.amcharts.com/lib/4/themes/dataviz.js" defer></script> -->
     <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
     <script src="/js/app.js"></script>
-    <!-- <script
-        src="http://maps.googleapis.com/maps/api/js?key=AIzaSyApvZImxJ5rfN1jobzVJqEIGGSznAsuhB8&libraries=visualization&callback=initHeatMap"
-        async></script> -->
     <script
         src="http://maps.googleapis.com/maps/api/js?key=AIzaSyApvZImxJ5rfN1jobzVJqEIGGSznAsuhB8&libraries=visualization"></script>
 </body>
